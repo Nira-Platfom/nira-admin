@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --coral: #FF6B6B;
+  --coral-light: #FFE8E8;
+  --coral-dark: #E55555;
+  --lavender: #B8A9E0;
+  --lavender-light: #F0ECFB;
+  --mint: #6BCFB8;
+  --mint-light: #E4F7F3;
+  --slate: #64748B;
+  --slate-light: #F1F5F9;
+  --slate-dark: #334155;
+  --white: #FFFFFF;
+  --border: #E2E8F0;
+  --text-primary: #1E293B;
+  --text-muted: #94A3B8;
+  --page-bg: #F8F7FF;
+  --charcoal: #1A1A2E;
+  --sidebar-bg: #16213E;
+  --danger: #EF4444;
+  --warning: #F59E0B;
+  --success: #10B981;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--page-bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+}
+
+@theme inline {
+  --color-coral: var(--coral);
+  --color-coral-light: var(--coral-light);
+  --color-lavender: var(--lavender);
+  --color-lavender-light: var(--lavender-light);
+  --color-mint: var(--mint);
+  --color-mint-light: var(--mint-light);
+  --color-slate: var(--slate);
+  --color-slate-light: var(--slate-light);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-page-bg: var(--page-bg);
+  --color-charcoal: var(--charcoal);
+  --color-sidebar: var(--sidebar-bg);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
 }
