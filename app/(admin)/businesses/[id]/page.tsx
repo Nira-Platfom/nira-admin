@@ -6,7 +6,8 @@ import api from '@/lib/api'
 import Header from '@/components/Header'
 import Badge from '@/components/Badge'
 import StatCard from '@/components/StatCard'
-import { ArrowLeft, Bot, Wifi, Save } from 'lucide-react'
+import BulkImportModal from '@/components/BulkImportModal'
+import { ArrowLeft, Bot, Wifi, Save, UploadCloud } from 'lucide-react'
 
 interface BusinessDetail {
   id: string
@@ -60,6 +61,7 @@ export default function BusinessDetailPage() {
   const [editPlan, setEditPlan] = useState('')
   const [editStatus, setEditStatus] = useState('')
   const [editBot, setEditBot] = useState(false)
+  const [importOpen, setImportOpen] = useState<'products' | 'services' | null>(null)
 
   useEffect(() => {
     api.get(`/admin/businesses/${id}`).then((res) => {
@@ -103,16 +105,41 @@ export default function BusinessDetailPage() {
         title={biz.name}
         subtitle={`${biz.city} · Created ${new Date(biz.created_at).toLocaleDateString()}`}
         action={
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
             <Badge value={biz.type} />
             {biz.whatsapp_connected && (
               <span className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-full" style={{ background: 'var(--mint-light)', color: 'var(--mint)' }}>
                 <Wifi size={10} /> WhatsApp
               </span>
             )}
+            <button
+              onClick={() => setImportOpen('products')}
+              className="flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-medium border"
+              style={{ borderColor: 'var(--border)', color: 'var(--text-primary)' }}
+            >
+              <UploadCloud size={13} /> Bulk import products
+            </button>
+            {biz.type === 'salon_spa' && (
+              <button
+                onClick={() => setImportOpen('services')}
+                className="flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-medium border"
+                style={{ borderColor: 'var(--border)', color: 'var(--text-primary)' }}
+              >
+                <UploadCloud size={13} /> Bulk import services
+              </button>
+            )}
           </div>
         }
       />
+
+      {importOpen && (
+        <BulkImportModal
+          businessId={biz.id}
+          kind={importOpen}
+          onClose={() => setImportOpen(null)}
+          onImported={() => {}}
+        />
+      )}
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
