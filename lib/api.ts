@@ -6,7 +6,7 @@ const api = axios.create({
 })
 
 api.interceptors.request.use((config) => {
-  const secret = Cookies.get('nira_admin_key') || process.env.NEXT_PUBLIC_ADMIN_SECRET || ''
+  const secret = Cookies.get('nira_admin_key') || ''
   config.headers['X-Admin-Secret'] = secret
   return config
 })

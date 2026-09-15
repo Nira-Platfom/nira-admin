@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Refuses to commit .env (or any .env.* variant except .env.example) —
+# this is exactly how the real DATABASE_URL/SECRET_KEY/API keys ended up
+# in this repo's history before. Active because core.hooksPath points here
+# (see README/setup note) — a fresh clone needs one command to re-enable it:
+#   git config core.hooksPath .githooks
+
+blocked=$(git diff --cached --name-only --diff-filter=ACM | grep -E '(^|/)\.env(\..*)?$' | grep -vE '\.env\.example$')
+
+if [ -n "$blocked" ]; then
+  echo "❌ Commit blocked — you're about to commit a real secrets file:"
+  echo "$blocked" | sed 's/^/   /'
+  echo ""
+  echo "   .env files hold live credentials (DB password, JWT signing key,"
+  echo "   API keys). If this is genuinely a template, name it .env.example."
+  echo ""
+  echo "   To unstage: git restore --staged <file>"
+  exit 1
+fi
+
+exit 0

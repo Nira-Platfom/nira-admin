@@ -8,9 +8,10 @@ export function middleware(request: NextRequest) {
   if (pathname === '/login') return NextResponse.next()
 
   const adminKey = request.cookies.get('nira_admin_key')?.value
-  const expectedSecret = process.env.NEXT_PUBLIC_ADMIN_SECRET || 'nira_admin_2025'
 
-  if (!adminKey || adminKey !== expectedSecret) {
+  // Only check that cookie exists — the backend validates the actual secret
+  // on every API call and returns 403 if invalid (handled in lib/api.ts)
+  if (!adminKey) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 

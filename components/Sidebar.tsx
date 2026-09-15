@@ -1,10 +1,11 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard, Building2, Users, BarChart2,
-  MessageSquare, Server, LogOut, Sparkles,
+  MessageSquare, Server, LogOut,
 } from 'lucide-react'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
@@ -34,15 +35,14 @@ export default function Sidebar() {
     >
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-5 border-b" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
-        <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--coral)' }}>
-          <Sparkles size={16} color="#fff" />
-        </div>
-        <div>
-          <span className="text-white font-medium text-sm" style={{ fontFamily: 'var(--font-dm-serif)' }}>
-            Nira Admin
-          </span>
-          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>Super Admin Panel</p>
-        </div>
+        <Image
+          src="/logo.png"
+          alt="Nira"
+          width={72}
+          height={28}
+          style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+        />
+        <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>Admin Panel</p>
       </div>
 
       {/* Nav */}

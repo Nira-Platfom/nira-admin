@@ -17,13 +17,9 @@ export default function LoginPage() {
     setLoading(true)
     setError('')
 
-    const expected = process.env.NEXT_PUBLIC_ADMIN_SECRET || 'nira_admin_2025'
-    if (secret === expected) {
-      Cookies.set('nira_admin_key', secret, { expires: 1 })
-      router.push('/dashboard')
-    } else {
-      setError('Invalid admin secret')
-    }
+    // Store whatever the user typed — the backend validates it on every API call
+    Cookies.set('nira_admin_key', secret, { expires: 1 })
+    router.push('/dashboard')
     setLoading(false)
   }
 
