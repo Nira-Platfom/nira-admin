@@ -14,6 +14,9 @@ const VARIANTS: Record<string, { bg: string; color: string }> = {
   ok:          { bg: '#DCFCE7', color: '#166534' },
   error:       { bg: '#FEE2E2', color: '#991B1B' },
   missing:     { bg: '#FEF9C3', color: '#854D0E' },
+  success:     { bg: '#DCFCE7', color: '#166534' },
+  running:     { bg: '#F0ECFB', color: '#9B8BC8' },
+  overdue:     { bg: '#FEE2E2', color: '#991B1B' },
 }
 
 interface BadgeProps {
