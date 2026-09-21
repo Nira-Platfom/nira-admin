@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard, Building2, Users, BarChart2,
-  MessageSquare, Server, LogOut, Clock, Star, ScrollText,
+  MessageSquare, Server, LogOut, Clock, Star, ScrollText, Coins,
 } from 'lucide-react'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
@@ -16,6 +16,7 @@ const NAV = [
   { href: '/users', label: 'Users', icon: Users },
   { href: '/analytics', label: 'Analytics', icon: BarChart2 },
   { href: '/chatbot', label: 'Chatbot Logs', icon: MessageSquare },
+  { href: '/usage', label: 'AI Usage & Costs', icon: Coins },
   { href: '/reviews', label: 'Reviews', icon: Star },
 ]
 
