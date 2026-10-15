@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard, Building2, Users, BarChart2,
-  MessageSquare, Server, LogOut, Clock, Star, ScrollText, Coins,
+  MessageSquare, Server, LogOut, Clock, Star, ScrollText, Coins, Wallet, Sparkles,
 } from 'lucide-react'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
@@ -15,6 +15,8 @@ const NAV = [
   { href: '/businesses', label: 'Businesses', icon: Building2 },
   { href: '/users', label: 'Users', icon: Users },
   { href: '/analytics', label: 'Analytics', icon: BarChart2 },
+  { href: '/agent', label: 'Nira Agent', icon: Sparkles },
+  { href: '/commissions', label: 'Commissions', icon: Wallet },
   { href: '/chatbot', label: 'Chatbot Logs', icon: MessageSquare },
   { href: '/usage', label: 'AI Usage & Costs', icon: Coins },
   { href: '/reviews', label: 'Reviews', icon: Star },
